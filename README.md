@@ -20,3 +20,5 @@
 # 2. BACK-END:
  - Installed 3 packages: express, body-parser and nodemon (check out `package.json`'s dependencies).
  - The 'routes' subfolder in the main 'backend' directory contains the files with the middleware responsible for handling routes related to places and users.
+ - Created a new 'models' subfolder in the main 'backend' directory. For now, we have added an 'http-error.js' model.
+ - Created a new 'controllers' subfolder in the main 'backend' directory. For now, we have added a 'places-controller.js' and a 'users-controllers.js' files.
