@@ -18,8 +18,8 @@ const UserItem = props => {
               <h3>
                 {props.placeCount}
                 {props.placeCount === 1
-                  ? 'Place'
-                  : 'Places'}
+                  ? ' Place'
+                  : ' Places'}
               </h3>
             </div>
           </Link>
