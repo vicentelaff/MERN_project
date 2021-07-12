@@ -84,7 +84,7 @@ const createPlace = async (req, res, next) => {
     title,
     description,
     image:
-      "https://images.pexels.com/photos/1314550/pexels-photo-1314550.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
     address,
     location: coordinates,
     creator,
