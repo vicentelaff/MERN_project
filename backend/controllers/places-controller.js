@@ -1,4 +1,5 @@
-const uuid = require("uuid").v4;
+const fs = require("fs");
+
 const { validationResult } = require("express-validator");
 const mongoose = require("mongoose");
 
@@ -83,8 +84,7 @@ const createPlace = async (req, res, next) => {
   const createdPlace = new Place({
     title,
     description,
-    image:
-      "https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg",
+    image: req.file.path,
     address,
     location: coordinates,
     creator,
@@ -186,6 +186,8 @@ const deletePlace = async (req, res, next) => {
     return next(error);
   }
 
+  const imagePath = place.image;
+
   try {
     const sess = await mongoose.startSession();
     sess.startTransaction();
@@ -200,6 +202,10 @@ const deletePlace = async (req, res, next) => {
     );
     return next(error);
   }
+
+  fs.unlink(imagePath, (err) => {
+    console.log(err);
+  });
 
   res.status(200).json({ message: "Successfully deleted place." });
 };

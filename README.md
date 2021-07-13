@@ -56,5 +56,50 @@ app.use((req, res, next) => {
   next();
 });
 ```
+
 - Handled the sign up and login requests (in `Auth.js`).
 - Created a new custom `http-hook.js` to help us manage the loading and error states from `Auth.js`.
+
+# 4. FILE UPLOAD (Images):
+
+- We've created a new `ImageUpload.js` component (in src/shared/components/formelements) to allow users to upload an image to the places they create.
+- Installed the Multer package to help us handle the file upload functionality. Created a new 'middleware' subfolder in the backend directory containing with a `file-upload.js` file.
+
+# 5. AUTHENTICATION:
+
+- Hashed the users' passwords with the help of a new package: `bcryptjs`. Modified the `users-controller.js` file as follows:
+
+```js
+let hashedPassword;
+try {
+  hashedPassword = await bcrypt.hash(password, 12);
+} catch (err) {
+  const error = new HttpError("Could not create user, please try again.", 500);
+  return next(error);
+}
+
+const createdUser = new User({
+  name,
+  email,
+  image: req.file.path,
+  password: hashedPassword,
+  places: [],
+});
+```
+
+- Installed a new package: `jsonwebtoken` that allows us to generate tokens based for example on userIds. Added the following code to `users-controller.js`:
+
+```js
+// Encoding the userId and the e-mail into a token.
+let token;
+try {
+  token = jwt.sign(
+    { userId: createdUser.id, email: createdUser.email },
+    "supersecret_dont_share",
+    { expiresIn: "1h" }
+  );
+} catch (err) {
+  const error = new HttpError("Signing up failed, please try again.", 500);
+  return next(error);
+}
+```
