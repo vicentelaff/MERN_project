@@ -18,7 +18,15 @@
 }
 
 .main-navigation__title {
+  display: flex;
+  padding-left: 10px;
+  padding-top: 5px;
+  align-items: center;
   color: white;
+}
+
+#c2v {
+  font-size: 28px;
 }
 
 .main-navigation__title a {

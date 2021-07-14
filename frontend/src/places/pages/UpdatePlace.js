@@ -69,13 +69,14 @@ const UpdatePlace = () => {
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
-          description: formState.inputs.title.value,
+          description: formState.inputs.description.value,
         }),
         {
           "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token,
         }
       );
-      history.push('/' + auth.userId + '/places');
+      history.push("/" + auth.userId + "/places");
     } catch (err) {}
   };
 

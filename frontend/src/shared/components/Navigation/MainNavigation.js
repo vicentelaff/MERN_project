@@ -1,49 +1,58 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import MainHeader from './MainHeader';
-import NavLinks from './NavLinks';
-import SideDrawer from './SideDrawer';
-import Backdrop from '../UIElements/Backdrop';
-import './MainNavigation.css';
+import MainHeader from "./MainHeader";
+import NavLinks from "./NavLinks";
+import SideDrawer from "./SideDrawer";
+import Backdrop from "../UIElements/Backdrop";
+import "./MainNavigation.css";
 
-const MainNavigation = props => {
+const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
 
   const openDrawerHandler = () => {
-    setDrawerIsOpen(true)
+    setDrawerIsOpen(true);
   };
 
   const closeDrawerHandler = () => {
-    setDrawerIsOpen(false)
+    setDrawerIsOpen(false);
   };
 
   return (
     <React.Fragment>
-      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler}/>}
+      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
       <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
         <nav className="main-navigation__drawer-nav">
-          <NavLinks/>
+          <NavLinks />
         </nav>
       </SideDrawer>
 
       <MainHeader>
-        <button className="main-navigation__menu-btn" onClick={openDrawerHandler}>
+        <button
+          className="main-navigation__menu-btn"
+          onClick={openDrawerHandler}
+        >
           <span></span>
           <span></span>
           <span></span>
         </button>
         <h1 className="main-navigation__title">
           <Link to="/">
-            Your Places
+            {/* <img
+              src="https://image.flaticon.com/icons/png/512/444/444667.png"
+              alt="Click-2-Visit"
+              width="40px"
+              height="40px"
+            /> */}
+            <span id="c2v">Click2Visit</span>
           </Link>
         </h1>
         <nav className="main-navigation__header-nav">
-          <NavLinks/>
+          <NavLinks />
         </nav>
       </MainHeader>
     </React.Fragment>
-  )
+  );
 };
 
 export default MainNavigation;
