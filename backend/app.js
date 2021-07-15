@@ -56,7 +56,7 @@ mongoose
     `mongodb+srv://${db_username}:${db_password}@cluster0.f5bl0.mongodb.net/${db_name}?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(5000);
+    app.listen(process.env.PORT || 5000);
   })
   .catch((err) => {
     console.log(err);
