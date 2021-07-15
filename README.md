@@ -1,7 +1,7 @@
 # 0. INTRODUCTION:
 
-- This is a MERN social media app that allows users to share real places they've been on the internet.
-- There are 3 main folders in our workflow: frontend, backend and webdesign.
+- This is a social media app created with the MERN stack (mobile first) that allows users to share real places they've been on the internet.
+- There are 2 main folders in our workflow: frontend and backend.
 
 # 1. FRONT-END:
 
@@ -103,3 +103,12 @@ try {
   return next(error);
 }
 ```
+
+- Added a new `check-auth.js` file in the 'middleware' subfolder on the backend, to help us protect the important routes in our app.
+- Created a new `auth-hook.js` containing all of our authentication related code that was previously in the `App.js` file.
+
+# 6. DEPLOYMENT:
+ - Created a new `nodemon.js` file (backend) containing sensitive code that was previsouly exposed.
+ - Created a new .env file (frontend) containing confidential environment variables that have been refactored.
+
+  > npm run build
