@@ -47,10 +47,13 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "An unknown error occurred!" });
 });
 
-// admin:Admin!465
+const db_username = process.env.DB_USER;
+const db_password = process.env.DB_PASSWORD;
+const db_name = process.env.DB_NAME;
+
 mongoose
   .connect(
-    "mongodb+srv://admin:Admin!465@cluster0.f5bl0.mongodb.net/mern?retryWrites=true&w=majority"
+    `mongodb+srv://${db_username}:${db_password}@cluster0.f5bl0.mongodb.net/${db_name}?retryWrites=true&w=majority`
   )
   .then(() => {
     app.listen(5000);
